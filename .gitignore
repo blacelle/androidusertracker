@@ -1,6 +1,25 @@
+# Binaries
+######################
 *.class
+ 
+# Eclipse
+######################
+.project
+.settings
+.classpath
+ 
+# Maven
+######################
+target
+bin
 
-# Package Files #
-*.jar
-*.war
-*.ear
+# Android
+######################
+gen
+ 
+# Temporary files
+######################
+*.swp
+*.log
+log
+bin
