@@ -21,12 +21,10 @@ aspect AndroidUserInteractionInterceptor {
 
 	pointcut OnLongClickListener_onLongClick(View v) :execution(boolean OnLongClickListener+.onLongClick(View)) && args(v) && !this(IAndroidNotAnalyzable);
 
+	pointcut OnItemClickListener_onItemClick(AdapterView<?> parent, View view, int position, long id) :execution(void OnItemClickListener.onItemClick(AdapterView<?>, View, int, long))  && args(parent, view, position, id);
 
-	pointcut OnItemClickListener_onItemClick(View v) :execution(boolean OnItemClickListener+.onItemClick(View)) && args(v) && !this(IAndroidNotAnalyzable);
+	pointcut OnItemLongClickListener_onItemLongClick(AdapterView<?> parent, View view, int a, long b) :execution(boolean OnItemLongClickListener+.onItemLongClick(AdapterView<?>, View, int, long)) && args(parent, view, a, b) && !this(IAndroidNotAnalyzable);
 
-	pointcut OnItemLongClickListener_onItemLongClick(View v) :execution(boolean OnItemLongClickListener+.onItemLongClick(View)) && args(v) && !this(IAndroidNotAnalyzable);
-
-    
 	protected IAndroidAnalyzable getAnalyzable(View v) {
 		if (v == null) {
 			return null;
@@ -68,6 +66,26 @@ aspect AndroidUserInteractionInterceptor {
 		if (analyzable != null) {
 			if (thisJoinPoint.getTarget() instanceof OnLongClickListener) {
 				analyzable.doAnalytics(v, (OnLongClickListener) thisJoinPoint.getTarget());
+			}
+		}
+	}
+
+	before(AdapterView<?> parent, View view, int position, long id) : OnItemClickListener_onItemClick(parent, view, position, id) {
+		IAndroidAnalyzable analyzable = getAnalyzable(view);
+
+		if (analyzable != null) {
+			if (thisJoinPoint.getTarget() instanceof OnItemClickListener) {
+				analyzable.doAnalytics(view, (OnItemClickListener) thisJoinPoint.getTarget());
+			}
+		}
+	}
+
+	before(AdapterView<?> parent, View view, int position, long id) : OnItemLongClickListener_onItemLongClick(parent, view, position, id) {
+		IAndroidAnalyzable analyzable = getAnalyzable(view);
+
+		if (analyzable != null) {
+			if (thisJoinPoint.getTarget() instanceof OnItemLongClickListener) {
+				analyzable.doAnalytics(view, (OnItemLongClickListener) thisJoinPoint.getTarget());
 			}
 		}
 	}

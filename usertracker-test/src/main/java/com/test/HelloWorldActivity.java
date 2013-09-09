@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
@@ -124,5 +125,17 @@ public class HelloWorldActivity extends Activity implements IAndroidAnalyzable {
 
 	public void test1_2(int i) {
 		System.out.println("test1_2() + " + i);
+	}
+
+	@Override
+	public void doAnalytics(View paramView, OnItemClickListener paramOnItemClickListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void doAnalytics(View view, OnItemLongClickListener target) {
+		// TODO Auto-generated method stub
+		
 	}
 }
