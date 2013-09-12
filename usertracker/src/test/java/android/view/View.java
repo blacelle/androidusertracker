@@ -10,7 +10,7 @@ public static class DragShadowBuilder
 {
 public  DragShadowBuilder(android.view.View view) { throw new RuntimeException("Stub!"); }
 public  DragShadowBuilder() { throw new RuntimeException("Stub!"); }
-@java.lang.SuppressWarnings(value={"JavadocReference"})
+@java.lang.SuppressWarnings(value={})
 public final  android.view.View getView() { throw new RuntimeException("Stub!"); }
 public  void onProvideShadowMetrics(android.graphics.Point shadowSize, android.graphics.Point shadowTouchPoint) { throw new RuntimeException("Stub!"); }
 public  void onDrawShadow(android.graphics.Canvas canvas) { throw new RuntimeException("Stub!"); }
@@ -459,7 +459,7 @@ public  void draw(android.graphics.Canvas canvas) { throw new RuntimeException("
 @android.view.ViewDebug.ExportedProperty(category="drawing")
 public  int getSolidColor() { throw new RuntimeException("Stub!"); }
 public  boolean isLayoutRequested() { throw new RuntimeException("Stub!"); }
-@java.lang.SuppressWarnings(value={"unchecked"})
+@java.lang.SuppressWarnings(value={})
 public  void layout(int l, int t, int r, int b) { throw new RuntimeException("Stub!"); }
 protected  void onLayout(boolean changed, int left, int top, int right, int bottom) { throw new RuntimeException("Stub!"); }
 protected  void onFinishInflate() { throw new RuntimeException("Stub!"); }
@@ -546,7 +546,7 @@ public final  boolean startDrag(android.content.ClipData data, android.view.View
 public  boolean onDragEvent(android.view.DragEvent event) { throw new RuntimeException("Stub!"); }
 public  boolean dispatchDragEvent(android.view.DragEvent event) { throw new RuntimeException("Stub!"); }
 public static  android.view.View inflate(android.content.Context context, int resource, android.view.ViewGroup root) { throw new RuntimeException("Stub!"); }
-@java.lang.SuppressWarnings(value={"UnusedParameters"})
+@java.lang.SuppressWarnings(value={})
 protected  boolean overScrollBy(int deltaX, int deltaY, int scrollX, int scrollY, int scrollRangeX, int scrollRangeY, int maxOverScrollX, int maxOverScrollY, boolean isTouchEvent) { throw new RuntimeException("Stub!"); }
 protected  void onOverScrolled(int scrollX, int scrollY, boolean clampedX, boolean clampedY) { throw new RuntimeException("Stub!"); }
 public  int getOverScrollMode() { throw new RuntimeException("Stub!"); }
