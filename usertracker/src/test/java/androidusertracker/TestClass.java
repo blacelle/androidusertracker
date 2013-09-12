@@ -10,6 +10,9 @@ import android.view.View.OnLongClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ExpandableListView.OnGroupClickListener;
 
 public class TestClass {
 
@@ -35,7 +38,7 @@ public class TestClass {
 
 		listener.onClick(v);
 
-		Mockito.verify(mockedContext, Mockito.times(1)).doAnalytics(v, listener);
+		Mockito.verify(mockedContext, Mockito.times(1)).doAnalytics(listener, v);
 	}
 
 	@Test
@@ -51,7 +54,7 @@ public class TestClass {
 
 		listener.onLongClick(v);
 
-		Mockito.verify(mockedContext, Mockito.times(1)).doAnalytics(v, listener);
+		Mockito.verify(mockedContext, Mockito.times(1)).doAnalytics(listener, v, true);
 	}
 
 	@Test
@@ -68,7 +71,7 @@ public class TestClass {
 
 		listener.onItemClick(null, v, 0, 0);
 
-		Mockito.verify(mockedContext, Mockito.times(1)).doAnalytics(v, listener);
+		Mockito.verify(mockedContext, Mockito.times(1)).doAnalytics(listener, null, v, 0, 0);
 
 	}
 
@@ -85,6 +88,38 @@ public class TestClass {
 
 		listener.onItemLongClick(null, v, 0, 0);
 
-		Mockito.verify(mockedContext, Mockito.times(1)).doAnalytics(v, listener);
+		Mockito.verify(mockedContext, Mockito.times(1)).doAnalytics(listener, null, v, 0, 0, true);
+	}
+
+	@Test
+	public void testOnGroupClickListener() {
+		OnGroupClickListener listener = new OnGroupClickListener() {
+
+			@Override
+			public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+				// any application code
+				return true;
+			}
+		};
+
+		listener.onGroupClick(null, v, 0, 0);
+
+		Mockito.verify(mockedContext, Mockito.times(1)).doAnalytics(listener, null, v, 0, 0, true);
+	}
+
+	@Test
+	public void testOnChildClickListener() {
+		OnChildClickListener listener = new OnChildClickListener() {
+
+			@Override
+			public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+				// any application code
+				return true;
+			}
+		};
+
+		listener.onChildClick(null, v, 0, 0, 0);
+
+		Mockito.verify(mockedContext, Mockito.times(1)).doAnalytics(listener, null, v, 0, 0, 0, true);
 	}
 }
