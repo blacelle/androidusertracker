@@ -21,7 +21,7 @@
 		<android.version>4.1.1.4</android.version>
 		<retrofit.version>1.2.2</retrofit.version>
 		<zxing.version>2.2</zxing.version>
-		<crittercism.version>3.0.11</crittercism.version>
+		<crittercism.version>4.0.0</crittercism.version>
 		<flurry.version>3.2.2</flurry.version>
 	</properties>
 
@@ -32,10 +32,23 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- Force 4.2.5 in providedas it is the version embedded in Android -->
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>4.2.5</version>
+				<scope>provided</scope>
+			</dependency>
+
 			<dependency>
 				<groupId>com.koushikdutta.ion</groupId>
 				<artifactId>ion</artifactId>
 				<version>${ion.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.roboguice</groupId>
+				<artifactId>roboguice</artifactId>
+				<version>2.0</version>
 			</dependency>
 
 			<dependency>
