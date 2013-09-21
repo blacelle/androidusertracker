@@ -41,6 +41,12 @@
 			</dependency>
 
 			<dependency>
+				<groupId>blasd</groupId>
+				<artifactId>androidusertracker</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
 				<groupId>com.koushikdutta.ion</groupId>
 				<artifactId>ion</artifactId>
 				<version>${ion.version}</version>
